@@ -1,0 +1,20 @@
+{
+  "name": "bjsmasth/salesforce-rest-api",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bijesh Shrestha",
+      "email": "bjsmasth@gmail.com",
+      "homepage": "https://github.com/bjsmasth"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.2",
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "bjsmasth\\Salesforce\\": "src/"
+    }
+  }
+}
