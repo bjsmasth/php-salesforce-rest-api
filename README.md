@@ -6,19 +6,8 @@
 
 Via Composer
 
-Add following repository in composer.json
 ``` bash
-"repositories": [
-         {
-             "type": "git",
-             "url": "git@github.com:bjsmasth/php-salesforce-rest-api.git"
-         },
-         ..........
-         ..........
-    ]
-```
-``` bash
-$php composer.phar require php-salesforce-rest-api
+composer require bjsmasth/php-salesforce-rest-api
 ```
 
 # Getting Started
