@@ -1,6 +1,13 @@
 {
   "name": "bjsmasth/php-salesforce-rest-api",
   "license": "MIT",
+  "keywords": [
+    "bjsmasth",
+    "php salesforce",
+    "php salesforce rest",
+    "php salesforce rest api",
+    "php"
+  ],
   "authors": [
     {
       "name": "Bijesh Shrestha",
