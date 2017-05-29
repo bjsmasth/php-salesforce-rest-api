@@ -42,7 +42,7 @@ After saving, you will now be given a Consumer Key and Consumer Secret. Update y
 
 # Setup
 
-Authenticate APP
+Authentication
 
 ```bash
     $options = [
@@ -67,4 +67,42 @@ Authenticate APP
  
     $access_token = $salesforce->getAccessToken();
     $instance_url = $salesforce->getInstanceUrl();
+```
+
+Query
+
+```bash
+    $query = 'SELECT Id,Name FROM ACCOUNT LIMIT 100';
+    
+    $crud = new \bjsmasth\Salesforce\CRUD();
+    $crud->query($query);
+```
+
+Create
+
+```bash
+    
+    $data = [
+       'Name' => 'some name',
+    ];
+    
+    $crud->create('Account', $data);  #returns id
+```
+
+Update
+
+```bash
+    $new_data = [
+       'Name' => 'another name',
+    ];
+    
+    $crud->update('Account', $id, $new_data); #returns status_code 204
+    
+```
+
+Delete
+
+```bash
+    $obj->delete('Account', $id);
+
 ```
