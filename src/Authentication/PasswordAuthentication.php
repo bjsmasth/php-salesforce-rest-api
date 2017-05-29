@@ -15,6 +15,10 @@ class PasswordAuthentication implements AuthenticationInterface
 
     public function __construct(array $options)
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $this->endPoint = 'https://login.salesforce.com/';
         $this->options = $options;
     }
@@ -23,12 +27,14 @@ class PasswordAuthentication implements AuthenticationInterface
     {
         $client = new Client();
 
-        $request = $client->request('post', $this->endPoint.'services/oauth2/token', ['form_params' => $this->options]);
+        $request = $client->request('post', $this->endPoint . 'services/oauth2/token', ['form_params' => $this->options]);
         $response = json_decode($request->getBody(), true);
 
         if ($response) {
             $this->access_token = $response['access_token'];
             $this->instance_url = $response['instance_url'];
+
+            $_SESSION['salesforce'] = $response;
         } else {
             throw new SalesforceAuthentication($request->getBody());
         }
