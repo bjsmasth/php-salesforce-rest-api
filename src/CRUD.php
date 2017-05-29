@@ -21,12 +21,15 @@ class CRUD
 
     public function query($query)
     {
-        $url = "$this->instance_url/services/data/v39.0/query?q=" . urlencode($query);
+        $url = "$this->instance_url/services/data/v39.0/query";
 
         $client = new Client();
         $request = $client->request('GET', $url, [
             'headers' => [
                 'Authorization' => "OAuth $this->access_token"
+            ],
+            'query' => [
+                'q' => $query
             ]
         ]);
 
