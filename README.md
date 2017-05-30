@@ -92,6 +92,6 @@ Update
 Delete
 
 ```bash
-    $obj->delete('Account', $id);
+    $crud->delete('Account', $id);
 
 ```
