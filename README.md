@@ -31,17 +31,16 @@ After saving, you will now be given a Consumer Key and Consumer Secret. Update y
 
 # Setup
 
-Authentication
+Password Authentication
 
 ```bash
     $options = [
-        'grant_type' => 'password',
-        'client_id' => 'CONSUMERKEY',
-        'client_secret' => 'CONSUMERSECRET',
-        'username' => 'SALESFORCE_USERNAME',
-        'password' => 'SALESFORCE_PASSWORD AND SECURITY_TOKEN'
+        'client_id' => CONSUMERKEY,
+        'client_secret' => CONSUMERSECRET,
+        'username' => SALESFORCE_USERNAME,
+        'password' => SALESFORCE_PASSWORD AND SECURITY_TOKEN
     ];
-    
+ 
     $salesforce = new bjsmasth\Salesforce\Authentication\PasswordAuthentication($options);
     $salesforce->authenticate();
     
@@ -56,6 +55,44 @@ Authentication
  
     $access_token = $salesforce->getAccessToken();
     $instance_url = $salesforce->getInstanceUrl();
+```
+Oauth2/Web Authentication
+
+1. Create file oauth.php and write the following code
+
+```bash
+
+define("LOGIN_URI", "https://login.salesforce.com");
+define("CONSUMERKEY", CONSUMERKEY);
+define("REDIRECT_URI", "https://login.salesforce.com");
+
+$auth_url = LOGIN_URI
+    . "/services/oauth2/authorize?response_type=code&client_id=".CONSUMERKEY."&redirect_uri=" . urlencode('".REDIRECT_URI."');
+
+header('Location: ' . $auth_url);
+```
+2. Create file or route that match callback url and write the following code:
+```bash
+$code = $_GET['code'];
+
+if (!isset($code) || $code == "") {
+    die("Error - code parameter missing from request!");
+}
+
+$options = [
+    'code' => $code,
+    'client_id' => CONSUMERKEY,
+    'client_secret' => CONSUMERSECRETE,
+    'redirect_uri' => 'CALLBACK_URI
+];
+
+$authentication = new \bjsmasth\Salesforce\Authentication\WebAuthentication($options);
+
+$response = $authentication->authenticate();
+
+if ($response == 200) {
+    header('Location: ' . 'someroute');
+}
 ```
 
 Query
