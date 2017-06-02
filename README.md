@@ -83,7 +83,7 @@ $options = [
     'code' => $code,
     'client_id' => CONSUMERKEY,
     'client_secret' => CONSUMERSECRETE,
-    'redirect_uri' => 'CALLBACK_URI
+    'redirect_uri' => CALLBACK_URI
 ];
 
 $authentication = new \bjsmasth\Salesforce\Authentication\WebAuthentication($options);
