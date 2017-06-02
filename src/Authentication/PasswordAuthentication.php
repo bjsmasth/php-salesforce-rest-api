@@ -25,6 +25,8 @@ class PasswordAuthentication implements AuthenticationInterface
 
     public function authenticate()
     {
+        $this->options['grant_type'] = 'password';
+
         $client = new Client();
 
         $request = $client->request('post', $this->endPoint . 'services/oauth2/token', ['form_params' => $this->options]);
