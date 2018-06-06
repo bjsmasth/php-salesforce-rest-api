@@ -27,7 +27,7 @@ class PasswordAuthentication implements AuthenticationInterface
     {
         $client = new Client();
 
-        $request = $client->request('post', $this->endPoint . 'services/oauth2/token', ['form_params' => $this->options]);
+        $request = $client->request('post', "{$this->endPoint}services/oauth2/token", ['form_params' => $this->options]);
         $response = json_decode($request->getBody(), true);
 
         if ($response) {
