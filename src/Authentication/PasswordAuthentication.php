@@ -13,13 +13,16 @@ class PasswordAuthentication implements AuthenticationInterface
     protected $access_token;
     protected $instance_url;
 
-    public function __construct(array $options)
+    public function __construct(array $options, $dev = false)
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         $this->endPoint = 'https://login.salesforce.com/';
+        if($dev) {
+            $this->endPoint = 'https://test.salesforce.com/';
+        }
         $this->options = $options;
     }
 
