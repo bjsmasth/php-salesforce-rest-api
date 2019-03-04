@@ -9,8 +9,9 @@ class CRUD
 {
     protected $instance_url;
     protected $access_token;
+    protected $client_options;
 
-    public function __construct()
+    public function __construct(array $clientOptions = array())
     {
         if (!isset($_SESSION) and !isset($_SESSION['salesforce'])) {
             throw new SalesforceException('Access Denied', 403);
@@ -18,6 +19,8 @@ class CRUD
 
         $this->instance_url = $_SESSION['salesforce']['instance_url'];
         $this->access_token = $_SESSION['salesforce']['access_token'];
+
+        $this->client_options = $clientOptions;
     }
 
     public function query($query)
@@ -32,7 +35,7 @@ class CRUD
             'query' => [
                 'q' => $query
             ]
-        ]);
+        ] + $this->client_options);
 
         return json_decode($request->getBody(), true);
     }
@@ -49,7 +52,7 @@ class CRUD
                 'Content-type' => 'application/json'
             ],
             'json' => $data
-        ]);
+        ] + $this->client_options);
 
         $status = $request->getStatusCode();
 
@@ -78,7 +81,7 @@ class CRUD
                 'Content-type' => 'application/json'
             ],
             'json' => $data
-        ]);
+        ] + $this->client_options);
 
         $status = $request->getStatusCode();
 
@@ -103,7 +106,7 @@ class CRUD
                 'Content-type' => 'application/json'
             ],
             'json' => $data
-        ]);
+        ] + $this->client_options);
 
         $status = $request->getStatusCode();
 
@@ -125,7 +128,7 @@ class CRUD
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}",
             ]
-        ]);
+        ] + $this->client_options);
 
         $status = $request->getStatusCode();
 
