@@ -45,6 +45,15 @@ Authentication
     $salesforce = new bjsmasth\Salesforce\Authentication\PasswordAuthentication($options);
     $salesforce->authenticate();
     
+    If use proxy server, append it.
+
+    $clientOptions = [
+        'proxy' => 'PROXY URL',
+    ];
+    
+    $salesforce = new bjsmasth\Salesforce\Authentication\PasswordAuthentication($options, $clientOptions);
+    $salesforce->authenticate();
+    
     $access_token = $salesforce->getAccessToken();
     $instance_url = $salesforce->getInstanceUrl();
     
@@ -64,6 +73,11 @@ Query
     $query = 'SELECT Id,Name FROM ACCOUNT LIMIT 100';
     
     $crud = new \bjsmasth\Salesforce\CRUD();
+    $crud->query($query);
+    
+    If use proxy server, append it.
+    
+    $crud = new \bjsmasth\Salesforce\CRUD($clientOptions);
     $crud->query($query);
 ```
 
