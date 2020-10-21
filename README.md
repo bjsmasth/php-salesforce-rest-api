@@ -39,7 +39,7 @@ Authentication
         'client_id' => 'CONSUMERKEY',
         'client_secret' => 'CONSUMERSECRET',
         'username' => 'SALESFORCE_USERNAME',
-        'password' => 'SALESFORCE_PASSWORD AND SECURITY_TOKEN'
+        'password' => 'SALESFORCE_PASSWORD OR SECURITY_TOKEN'
     ];
     
     $salesforce = new bjsmasth\Salesforce\Authentication\PasswordAuthentication($options);
