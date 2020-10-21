@@ -64,7 +64,7 @@ Query
     $query = 'SELECT Id,Name FROM ACCOUNT LIMIT 100';
     
     $crud = new \bjsmasth\Salesforce\CRUD();
-    $crud->query($query);
+    $result = $crud->query($query);
 ```
 
 Create
