@@ -37,6 +37,20 @@ class CRUD
         return json_decode($request->getBody(), true);
     }
 
+    public function getNext($url)
+    {
+        $url = "$this->instance_url.$url";
+
+        $client = new Client();
+        $request = $client->request('GET', $url, [
+            'headers' => [
+                'Authorization' => "OAuth $this->access_token"
+            ]
+        ]);
+
+        return json_decode($request->getBody(), true);
+    }
+
     public function create($object, array $data)
     {
         $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/";

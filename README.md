@@ -67,6 +67,31 @@ Query
     $result = $crud->query($query);
 ```
 
+Get Next
+
+```bash
+    $query = 'SELECT Id,Name FROM ACCOUNT';
+    
+    $crud = new \bjsmasth\Salesforce\CRUD();
+    $result = $crud->query($query);
+
+    $allRecords = [];
+    
+    while (isset($result) && !$result['done']) {
+
+        if (isset($result['records'])) {
+            $allRecords = array_merge($allRecords, $result['records']);
+        }
+        
+        $result = $crud->getNext($result['nextRecordsUrl']);
+    }
+
+    if (isset($result['records'])) {
+        $allRecords = array_merge($allRecords, $result['records']);
+    }
+
+```
+
 Create
 
 ```bash
