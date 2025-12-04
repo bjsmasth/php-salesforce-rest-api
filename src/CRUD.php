@@ -39,7 +39,7 @@ class CRUD
 
     public function create($object, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/";
 
         $client = new Client();
 
@@ -68,7 +68,7 @@ class CRUD
 
     public function update($object, $id, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
         $client = new Client();
 
@@ -93,7 +93,7 @@ class CRUD
 
     public function upsert($object, $field, $id, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$field}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$field}/{$id}";
 
         $client = new Client();
 
@@ -118,7 +118,7 @@ class CRUD
 
     public function delete($object, $id)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
         $client = new Client();
         $request = $client->request('DELETE', $url, [
