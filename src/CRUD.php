@@ -22,9 +22,12 @@ class CRUD
 
     public function query($query)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/query";
+        $url = "{$this->instance_url}/services/data/v63.0/query";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('GET', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}"
@@ -39,9 +42,12 @@ class CRUD
 
     public function create($object, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
 
         $request = $client->request('POST', $url, [
             'headers' => [
@@ -68,9 +74,12 @@ class CRUD
 
     public function update($object, $id, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
 
         $request = $client->request('PATCH', $url, [
             'headers' => [
@@ -93,10 +102,12 @@ class CRUD
 
     public function upsert($object, $field, $id, array $data)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$field}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$field}/{$id}";
 
-        $client = new Client();
-
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('PATCH', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}",
@@ -118,9 +129,12 @@ class CRUD
 
     public function delete($object, $id)
     {
-        $url = "{$this->instance_url}/services/data/v39.0/sobjects/{$object}/{$id}";
+        $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('DELETE', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}",
