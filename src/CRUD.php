@@ -24,7 +24,10 @@ class CRUD
     {
         $url = "{$this->instance_url}/services/data/v63.0/query";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('GET', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}"
@@ -41,7 +44,10 @@ class CRUD
     {
         $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
 
         $request = $client->request('POST', $url, [
             'headers' => [
@@ -70,7 +76,10 @@ class CRUD
     {
         $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
 
         $request = $client->request('PATCH', $url, [
             'headers' => [
@@ -95,8 +104,10 @@ class CRUD
     {
         $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$field}/{$id}";
 
-        $client = new Client();
-
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('PATCH', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}",
@@ -120,7 +131,10 @@ class CRUD
     {
         $url = "{$this->instance_url}/services/data/v63.0/sobjects/{$object}/{$id}";
 
-        $client = new Client();
+        $client = new Client([
+            'timeout'         => 10,
+            'connect_timeout' => 5,
+        ]);
         $request = $client->request('DELETE', $url, [
             'headers' => [
                 'Authorization' => "OAuth {$this->access_token}",
