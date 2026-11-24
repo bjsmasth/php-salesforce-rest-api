@@ -15,9 +15,9 @@ composer require bjsmasth/php-salesforce-rest-api
 - PHP 8.2 or newer
 - Guzzle 7 (`guzzlehttp/guzzle` ^7.8, installed automatically)
 
-Need PHP 5.5–8.1 or Guzzle 6? Stay on the 1.x release.
+Need PHP 5.5–8.1 or Guzzle 6? Stay on the 0.x releases (`composer require bjsmasth/php-salesforce-rest-api:^0.2`).
 
-### Upgrading from 1.x
+### Upgrading from 0.x
 
 - The library now uses `declare(strict_types=1)` and typed signatures. Pass record IDs, object names and field names as strings.
 - If you implement `AuthenticationInterface` yourself, `getAccessToken()` and `getInstanceUrl()` must now return `?string`.
