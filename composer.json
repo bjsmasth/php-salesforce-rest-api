@@ -1,5 +1,6 @@
 {
   "name": "bjsmasth/php-salesforce-rest-api",
+  "description": "Simple PHP client for the Salesforce REST API",
   "license": "MIT",
   "keywords": [
     "bjsmasth",
@@ -16,12 +17,26 @@
     }
   ],
   "require": {
-    "guzzlehttp/guzzle": "^6.2 || ^7",
-    "php": ">=5.5"
+    "php": ">=8.2",
+    "guzzlehttp/guzzle": "^7.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
   },
   "autoload": {
     "psr-4": {
       "bjsmasth\\Salesforce\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "bjsmasth\\Salesforce\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }
